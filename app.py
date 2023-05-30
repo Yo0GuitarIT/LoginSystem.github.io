@@ -1,0 +1,24 @@
+from flask import Flask,render_template, request
+
+app = Flask(__name__)
+
+@app.route("/login", methods=["POST"])
+def login():
+	form = request.form
+		
+	if form["username"] == "aaa" and form["email"] == "a@a.com" and form["password"] == "111":
+		return "You are logged in"
+	elif form["username"] == "bbb" and form["email"] == "b@b.com" and form["password"] == "222":
+		return "You are logged in"
+	elif form["username"] == "ccc" and form["email"] == "c@c.com" and form["password"] == "333":
+		return "You are logged in"
+	else:
+		return "Username, E-mail or password incorrect"
+
+
+@app.route('/')
+def index():
+	return render_template('index.html')
+
+if __name__=="__main__":
+	app.run(debug=True)
